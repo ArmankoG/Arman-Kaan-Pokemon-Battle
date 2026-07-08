@@ -33,13 +33,45 @@ namespace ArmanKaanPokemonBattle
 
         public void AttackEnemy(Pokemon enemy)
         {
-            int attacker = rnd.Next(0, Attack + 1);
-            int defender = rnd.Next(0, enemy.Defence + 1);
+            int att = rnd.Next(0, Attack + 1);
+            int def = rnd.Next(0, enemy.Defence + 1);
 
-            Console.WriteLine($"{Name} атакува с {attacker}");
-            Console.WriteLine($"{enemy.Name} защитава с {defender}");
+            Console.WriteLine($"{Name} атакува с {att}");
+            Console.WriteLine($"{enemy.Name} защитава с {def}");
 
-            //todo - да се направи if проверка за това дали атакуващия е по-силен от защитата, и противоположното, да се направи и метод Heal
+            if (att > def)
+            {
+                int damage = att - def;
+                enemy.Health -= damage;
+
+                Console.WriteLine($"Щета: {damage}");
+
+                if (enemy.Health <= 0)
+                {
+                    enemy.Health = 0;
+                    enemy.IsAlive = false;
+                    Console.WriteLine($"{enemy.Name} е победен!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Няма нанесена щета.");
+            }
+        }
+
+        public void Heal()
+        {
+            if (IsAlive == false)
+            {
+                return;
+            }
+
+            Health += Strength / 10;
+
+            if (Health > 100)
+            {
+                Health = 100;
+            }
         }
     }
 }
