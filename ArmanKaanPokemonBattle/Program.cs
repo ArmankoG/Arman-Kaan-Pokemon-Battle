@@ -11,6 +11,10 @@ namespace ArmanKaanPokemonBattle
     {
         static void Main(string[] args)
         {
+            Game game = new Game();
+            game.StartGame();
+
+            Console.ReadKey(); // натисни копче за да продължи
         }
     }
 }
