@@ -32,7 +32,13 @@ namespace ArmanKaanPokemonBattle
 
         public void HealReservePokemons()
         {
-            //todo
+            foreach (Pokemon p in Pokemons)
+            {
+                if (p != ActivePokemon)
+                {
+                    p.Heal();
+                }
+            }
         }
     }
 }
