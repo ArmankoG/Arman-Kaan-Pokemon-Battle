@@ -11,6 +11,7 @@ namespace ArmanKaanPokemonBattle
     {
         static void Main(string[] args)
         {
+            Console.OutputEncoding = Encoding.UTF8;
             Game game = new Game();
             game.StartGame();
 
